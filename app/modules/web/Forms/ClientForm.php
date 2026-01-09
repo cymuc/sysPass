@@ -70,7 +70,7 @@ final class ClientForm extends FormBase implements FormInterface
     {
         $this->clientData = new ClientData();
         $this->clientData->setId($this->itemId);
-        $this->clientData->setName($this->request->analyzeString('name'));
+        $this->clientData->setName(htmlspecialchars($this->request->analyzeString('name'), ENT_QUOTES, 'UTF-8'));
         $this->clientData->setDescription($this->request->analyzeString('description'));
         $this->clientData->setIsGlobal($this->request->analyzeBool('isglobal', false));
     }
